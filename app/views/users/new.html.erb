@@ -1,0 +1,60 @@
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+
+<% if @user.errors.any? %>
+  <ul>
+    <% @user.errors.full_messages.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+
+<%= form_with model: @user, data: { turbo: false } do |f| %>
+  <ul>
+    <li>
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name %>
+    </li>
+    <li>
+      <%= f.label :middle_name %>
+      <%= f.text_field :middle_name %>
+    </li>
+    <li>
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name %>
+    </li>
+    <li>
+      <%= f.label :username %>
+      <%= f.text_field :username %>
+    </li>
+    <li>
+      <%= f.label :email %>
+      <%= f.email_field :email %>
+    </li>
+    <li>
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+    </li>
+    <li>
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation %>
+    </li>
+    <li>
+      <%= f.submit %>
+    </li>
+  </ul>
+<% end %>
+
+
+<style>
+.field_with_errors {
+  border: 2px solid red;
+  display: inline-block;
+}
+
+.notice {
+  color: green;
+}
+</style>
