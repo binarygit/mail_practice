@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(new_user_parmas)
+    @user = User.new(new_user_params)
 
     if @user.save
       flash.notice = 'Please check your email for sign up confirmation'
@@ -12,5 +12,11 @@ class UsersController < ApplicationController
     else
       render :new
     end
+  end
+
+  private
+
+  def new_user_params
+    params.require(:user).permit(:first_name, :middle_name, :last_name, :email, :password, :username, :password_confirmation)
   end
 end
