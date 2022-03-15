@@ -7,6 +7,7 @@ class UsersController < ApplicationController
     @user = User.new(new_user_params)
 
     if @user.save
+      UserMailer.with(user: @user).confirmation_mail.deliver_later
       flash.notice = 'Please check your email for sign up confirmation'
       redirect_to root_path
     else
