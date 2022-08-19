@@ -2,7 +2,7 @@
 
 ## Problem
 You are building a website using Hotwire. There are many parts of your application that utilize Turbo and stimulusJs to provide a SPA like feel. However, in certain pages, the Turbo Actions feel slow. Maybe you're rendering a flash message after login or adding a new book to a list of books right after it's created on the same page...but it's slow. The view does update without a reload but there's a lag to the update.
-The Problem could be that it's taking your controller action that is responsible for rendering the page some time to respond and update the view.
+The Problem could be that it's taking your controller action which is responsible for rendering the page, some time to respond and update the view.
 
 ![ezgif com-gif-maker(2)](https://user-images.githubusercontent.com/87677429/185598771-c19f8262-2a0c-46fd-a29f-5b8f15fd6364.gif)
 
@@ -26,7 +26,7 @@ Here is our HTML
 </section>
 ```
 
-As you can see, we have a `StimulusJs` controller called `network-test`. This controller is what we are using to calculate the `Total Network Response Time`. There are only four simple steps involved in calculating this. They are:
+The steps for calculating the time that our server takes to respond to a response are very simple. We just need a Stimulus Controller to make a request when our `Press Me!` button is clicked and then display the time.  
 
 1. Store a timestamp just before sending the request. We'll call this startTime.
 2. Make the request.
