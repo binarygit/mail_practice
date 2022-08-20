@@ -1,7 +1,7 @@
 # How to measure the Total Network Response Time using Stimulus
 
 ## Problem
-You are building a website using Hotwire. There are many parts of your application that utilize Turbo and StimulusJs to provide a SPA like feel. However, in certain pages, the Turbo Actions feel slow. Maybe you're rendering a flash message after login or adding a new book to a list of books right after it's created on the same page...but it's slow. The view does update without a reload but there's a lag to the update.
+You are building a website using Hotwire. Many parts of your application utilize Turbo and StimulusJs to provide a SPA like feel. However, in certain pages, the Turbo Actions feel slow. Maybe you're rendering a flash message after login or adding a new book to a list of books right after it's created on the same page...but it's slow. The view does update without a reload but there's a lag to the update.
 The problem could be that it's taking your controller action which is responsible for rendering the page, a long time to respond and update the view. In other words, your page updates are slow because your Total Network Response Time is high.
 
 ![ezgif com-gif-maker(2)](https://user-images.githubusercontent.com/87677429/185598771-c19f8262-2a0c-46fd-a29f-5b8f15fd6364.gif)
@@ -29,7 +29,7 @@ Now, the steps for calculating the time that our server takes to respond to a re
 1. Store a timestamp just before sending the request. We'll call this startTime.
 2. Make the request.
 3. Store another timestamp right after the response data is parsed. We'll call this endTime.
-4. Calculate the difference between endTime and startTime. This is the total time it took our controller to respond to our response. It's also called the Total Network Response Time.
+4. Calculate the difference between endTime and startTime. This is the total time our controller took to respond to our response. It's also called the Total Network Response Time.
 5. Display the Total Network Response Time.
 
 Here is the full StimulusCode:
