@@ -53,3 +53,9 @@ export default class extends Controller {
   }
 }
 ```
+
+And here is how the feature looks like once it's done:
+
+![ezgif com-gif-maker(3)](https://user-images.githubusercontent.com/87677429/185729996-1d5bab01-9bea-4e04-ac51-4882164ab986.gif)
+
+
