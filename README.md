@@ -11,7 +11,7 @@ Inorder to test this theory, you decide to create a feature that measures the to
 How do you create such a feature that sends a request to the controller and calculates the time it takes the controller to respond?
 
 ## Solution
-First we need a button. When we click it the request is made and the total time taken is displayed. We also need a `paragraph` element to display the total time once it's calculated. Lastly we need to pass in the `url` of the current_page to our stimulus controller.
+First, we need a button. When we click it the request is made and the total time taken is displayed. We also need a `paragraph` element to display the total time once it's calculated. Lastly we need to pass in the `url` of the current_page to our stimulus controller.
 
 ```html
 <section 
