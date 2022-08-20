@@ -1,7 +1,7 @@
 # How to measure the Total Network Response Time using Stimulus
 
 ## Problem
-You are building a website using Hotwire. There are many parts of your application that utilize Turbo and stimulusJs to provide a SPA like feel. However, in certain pages, the Turbo Actions feel slow. Maybe you're rendering a flash message after login or adding a new book to a list of books right after it's created on the same page...but it's slow. The view does update without a reload but there's a lag to the update.
+You are building a website using Hotwire. There are many parts of your application that utilize Turbo and StimulusJs to provide a SPA like feel. However, in certain pages, the Turbo Actions feel slow. Maybe you're rendering a flash message after login or adding a new book to a list of books right after it's created on the same page...but it's slow. The view does update without a reload but there's a lag to the update.
 The Problem could be that it's taking your controller action which is responsible for rendering the page, a long time to respond and update the view. In other words, your page updates are slow because your Total Network Response Time is high.
 
 ![ezgif com-gif-maker(2)](https://user-images.githubusercontent.com/87677429/185598771-c19f8262-2a0c-46fd-a29f-5b8f15fd6364.gif)
@@ -16,7 +16,7 @@ First we need a button. When we click it the request is made and the time is dis
 ```html
 <section 
   data-controller="network-test"
-  data-network-test-url-value=<%= home_url %> >
+  data-network-test-url-value=<%= books_url %> >
 
   <button data-action="network-test#test">Press me!</button>
   <p data-network-test-target="message"></p>
@@ -44,7 +44,7 @@ export default class extends Controller {
   async test() {
     const startTime = new Date()
 
-    const response = await fetch(this.urlValue)
+    const response = await fetch(this.urlValue + '.json')
     const result = await response.json()
 
     const endTime = new Date()
@@ -57,13 +57,21 @@ export default class extends Controller {
 One thing to keep in mind with this approach is that we're expecting the data that the server gives us to be `json`.
 
 ```js
+// The .json in the end lets the server know
+// we are expecting a json response
+const response = await fetch(this.urlValue + '.json')
 const result = await response.json()
 ```
 
 So, we'll need to tell our controller to respond with a json response.
 
 ```ruby
-    render json: @books
+    respond_to do |format|
+      ...
+      ...
+      format.json { render :json => @book }
+    end
+
 ```
 
 And here is how the feature looks like once it's done:
