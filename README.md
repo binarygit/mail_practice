@@ -2,7 +2,7 @@
 
 ## Problem
 You are building a website using Hotwire. There are many parts of your application that utilize Turbo and StimulusJs to provide a SPA like feel. However, in certain pages, the Turbo Actions feel slow. Maybe you're rendering a flash message after login or adding a new book to a list of books right after it's created on the same page...but it's slow. The view does update without a reload but there's a lag to the update.
-The Problem could be that it's taking your controller action which is responsible for rendering the page, a long time to respond and update the view. In other words, your page updates are slow because your Total Network Response Time is high.
+The problem could be that it's taking your controller action which is responsible for rendering the page, a long time to respond and update the view. In other words, your page updates are slow because your Total Network Response Time is high.
 
 ![ezgif com-gif-maker(2)](https://user-images.githubusercontent.com/87677429/185598771-c19f8262-2a0c-46fd-a29f-5b8f15fd6364.gif)
 
@@ -11,7 +11,7 @@ Inorder to test this theory, you decide to create a feature that measures the to
 How do you create such a feature that sends a request to the controller and calculates the time it takes the controller to respond?
 
 ## Solution
-First we need a button. When we click it the request is made and the time is displayed. We also need a `paragraph` element to display the time once it's calculated. Lastly we need to pass in the `url` of the current_page to our stimulus controller.
+First we need a button. When we click it the request is made and the total time taken is displayed. We also need a `paragraph` element to display the total time once it's calculated. Lastly we need to pass in the `url` of the current_page to our stimulus controller.
 
 ```html
 <section 
