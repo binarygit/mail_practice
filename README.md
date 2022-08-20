@@ -6,27 +6,25 @@ The Problem could be that it's taking your controller action which is responsibl
 
 ![ezgif com-gif-maker(2)](https://user-images.githubusercontent.com/87677429/185598771-c19f8262-2a0c-46fd-a29f-5b8f15fd6364.gif)
 
-Inorder to test this theory, you decide to create a feature that measures the total time it takes your controller action to respond to a request.
+Inorder to test this theory, you decide to create a feature that measures the total time it takes your controller action to respond to a request. 
 
-How do you create such a feature that sends a request to the controller and calculates the time it took the controller to respond?
+How do you create such a feature that sends a request to the controller and calculates the time it takes the controller to respond?
 
 ## Solution
-Let's assume that we want to test the total time it takes for the `StaticPages#home` controller to provide a response to the view. We are going to initiate the response using a button. When the button is clicked, the response time is calculated and displayed in the page itself.
-
-Here is our HTML
+First we need a button. When we click it the request is made and the time is displayed. We also need a `paragraph` element to display the time once it's calculated. Lastly we need to pass in the `url` of the current_page to our stimulus controller.
 
 ```html
 <section 
-  data-controller="network-test" 
+  data-controller="network-test"
   data-network-test-url-value=<%= home_url %> >
 
   <button data-action="network-test#test">Press me!</button>
-  <div data-network-test-target="message"></div>
+  <p data-network-test-target="message"></p>
 
 </section>
 ```
 
-The steps for calculating the time that our server takes to respond to a response are very simple. We just need a Stimulus Controller to make a request when our `Press Me!` button is clicked and then display the time.  
+Now, the steps for calculating the time that our server takes to respond to a request are very simple. They are:
 
 1. Store a timestamp just before sending the request. We'll call this startTime.
 2. Make the request.
