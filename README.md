@@ -54,6 +54,18 @@ export default class extends Controller {
 }
 ```
 
+One thing to keep in mind with this approach is that we're expecting the data that the server gives us to be `json`.
+
+```js
+const result = await response.json()
+```
+
+So, we'll need to tell our controller to respond with a json response.
+
+```ruby
+    render json: @books
+```
+
 And here is how the feature looks like once it's done:
 
 ![ezgif com-gif-maker(3)](https://user-images.githubusercontent.com/87677429/185729996-1d5bab01-9bea-4e04-ac51-4882164ab986.gif)
